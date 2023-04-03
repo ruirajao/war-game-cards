@@ -1,0 +1,104 @@
+.spade-card {
+    width: 100px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    color: black;
+    perspective: 1000;
+}
+
+.diamond-card {
+    width: 100px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative; 
+    color: red;
+}
+
+.club-card {
+    width: 100px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative;
+    color: black;
+}
+
+.heart-card {
+    width: 100px;
+    height: 150px;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 10px;
+    position: relative; 
+    color: red;
+}
+
+.spade-card, .diamond-card, .club-card, .heart-card {
+    margin: 1px;
+}
+
+.value, .suit {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: right;
+    margin:0
+}
+
+.top-left-values {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: 3px;
+}
+
+.middle-suit .suit {
+    font-size: 500%;
+}
+
+.middle-suit {
+    position: absolute;
+    font-size: 100% !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bottom-right-values {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+  }
+
+  .spade-card,
+.diamond-card,
+.club-card,
+.heart-card {
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+}
+
+.spade-card:hover,
+.diamond-card:hover,
+.club-card:hover,
+.heart-card:hover {
+  transform: rotateY(180deg) rotateZ(180deg);
+}
+
+.top-left-values,
+.middle-suit,
+.bottom-right-values {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  position: absolute;
+}
+
+
+
+  
+  
