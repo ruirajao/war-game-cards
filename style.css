@@ -1,4 +1,4 @@
-.spade-card {
+/* .spade-card {
     width: 100px;
     height: 150px;
     border: 2px solid black;
@@ -29,7 +29,7 @@
     color: black;
 }
 
-.heart-card {
+.card-heart {
     width: 100px;
     height: 150px;
     border: 2px solid black;
@@ -38,6 +38,7 @@
     position: relative; 
     color: red;
 }
+
 
 .spade-card, .diamond-card, .club-card, .heart-card {
     margin: 1px;
@@ -96,9 +97,163 @@
   backface-visibility: hidden;
   transform-style: preserve-3d;
   position: absolute;
+} */
+
+
+/* CONTAINER - BACKGROUND */
+.container {
+  background: beige;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* CONTAINER - DECK */
+#card-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* EACH CARD PROPERTIES */
+
+
+.card-♠, .card-♣  {
+  background-color: white;
+  width: 100px;
+  height: 150px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative;
+  color: black;
+  margin:5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.card-♥, .card-♦ {
+  background-color: white;
+  width: 100px;
+  height: 150px;
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  position: relative; 
+  color: red;
+  margin:5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 
+/* CARD CONTENT FORMAT */
+.top-left-values {
+  position: absolute;
+  top: 3px;
+  left: 5px;
+  border: 3px;
+  font-size: 120%;
+  margin:0;
+}
 
-  
+.top-left-values .value,.suit {
+  margin:0;
+}
+
+
+.middle-suit {
+  position: absolute;
+  font-size: 100% !important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.middle-suit .suit {
+  font-size: 500%;
+}
+
+.bottom-right-values {
+  position: absolute;
+  bottom: 3px;
+  right: 5px;
+  font-size: 120%;
+  margin:0;
+  rotate: 180deg;
+}
+
+
+.bottom-left-values .suit,.value {
+  margin:0;
+}
+
+/* 3D IMPLEMENTATION */
+
+.card-♠,
+.card-♣,
+.card-♥,
+.card-♦ {
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.card-♠:hover,
+.card-♣:hover,
+.card-♥:hover,
+.card-♦:hover {
+  transform: rotateY(180deg);
+  cursor:pointer;
+}
+
+/* HIDE CARD CONTENT WHEN ROTATING */
+.top-left-values,
+.middle-suit,
+.bottom-right-values {
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  position: absolute;
+}
+
+/* CARD BACK PATTERN */
+.card-back {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* .card-back .pattern {
+  position: absolute;
+  left:4px;
+  margin:0;
+  align-items:flex-start;
+} */
+
+.card-back img {
+  width: 100%;
+  height: 100%;
+  object-fit:contain;
+}
+
+
+/* CONTAINER - SHUFLED DECK */
+#shuffled-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* CONTAINER - PLAYER1/2 DECK */
+#player1Deck-container, #player2Deck-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
   
