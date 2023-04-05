@@ -1,6 +1,7 @@
 
 
 
+const suitsMap = {}
 
 const suits = ['♠', '♣', '♥', '♦'];
 const values = ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
@@ -76,17 +77,17 @@ let fakeDeck = [];
     for (let i = 0; i < suits.length; i++) {
       for (let j = 0; j < values.length; j++) {
         const fakeCard = `
-          <div class="fake-card-1">
+          <div class="fake-card">
             <div class="top-left-values">
               <p class="value">${values[j]}</p>
-              <p class="suit">${suits[i]}</p>
+              <p class="suit.${suits[i]}">${suits[i]}</p>
             </div>
             <div class="middle-suit">
-              <p class="suit">${suits[i]}</p>
+              <p class="suit.${suits[i]}">${suits[i]}</p>
             </div>
             <div class="bottom-right-values">
               <p class="value">${values[j]}</p>
-              <p class="suit">${suits[i]}</p>
+              <p class="suit.${suits[i]}">${suits[i]}</p>
             </div>
             <div class="card-back">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
@@ -100,5 +101,15 @@ const fakeDeckContainer = document.getElementById('stack-deck');
 fakeDeckContainer.innerHTML = fakeDeck.join('');
 
 
+
+const suitSet = {
+    spade: '♠',
+    club: '♣',
+    heart: '♥',
+    diamond: '♦'
+  };
+
+  console.log(suitSet.spade);
+  console.log(suitSet[spade]);
 
 

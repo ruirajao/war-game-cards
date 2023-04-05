@@ -141,7 +141,7 @@
   position: relative; 
   color: red;
   margin:5px;
-  
+
 }
 
 
@@ -264,6 +264,12 @@
   position: relative;
 }
 
+/* #stack-deck {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+} */
+
 .fake-card {
   position: absolute;
   top: 20px;
@@ -277,6 +283,17 @@
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
+
+
+top.suit.♠, .suit.♣ {
+colour:black;
+}
+
+.suit.♥, .suit.♦ {
+colour:red;
+}
+
+
 
 
 .fake-card:nth-child(2) {
