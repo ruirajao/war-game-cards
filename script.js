@@ -5,54 +5,44 @@ const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', 
 const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 let deck = [];
 
-for (let i = 0; i < suits.length; i++) {
-    for (let k = 0; k < values.length; k++) {
-        let card = {
-            id: k + 1,
-            suit: suits[i],
-            suitSymbol: suitsSymbol[i],
-            value: values[k],
-            valueSymbol: valuesSymbol[k]
-        };
-        deck.push(card);
-    }
-}
-
-
-
+suits.forEach((suit, suitIndex) => {
+    values.forEach((value, valuesIndex) => {
+        deck.push({
+            id: suitIndex * values.length + valuesIndex + 1,
+            suit: suit,
+            suitSymbol: suitsSymbol[suitIndex],
+            value: value,
+            valueSymbol: valuesSymbol[valuesIndex]
+        });
+    })
+});
 console.log(deck);
-console.log(deck[0]);
 
-var deckCounter = 0;
 let visualDeck = [];
-
-for (let i = 0; i < suits.length; i++) {
-    for (let j = 0; j < values.length; j++) {
-        const card = `
-        <div class="card-${deck[deckCounter].suit}">
+deck.forEach(card => {
+    visualDeck.push(
+        `<div class="card-${card.suit}">
             <div class="top-left-values">
-              <p class="value">${deck[deckCounter].valueSymbol}</p>
-              <p class="suit">${deck[deckCounter].suitSymbol}</p>
+              <p class="value">${card.valueSymbol}</p>
+              <p class="suit">${card.suitSymbol}</p>
             </div>
             <div class="middle-suit">
-              <p class="suit">${deck[deckCounter].suitSymbol}</p>
+              <p class="suit">${card.suitSymbol}</p>
             </div>
             <div class="bottom-right-values">
-              <p class="value">${deck[deckCounter].valueSymbol}</p>
-              <p class="suit">${deck[deckCounter].suitSymbol}</p>
+              <p class="value">${card.valueSymbol}</p>
+              <p class="suit">${card.suitSymbol}</p>
             </div>
             <div class="card-back">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
             </div>
-        </div>
-        `;
-        deckCounter++;
-        visualDeck.push(card);
-    }
-}
+        </div>`
+    )
+})
+
 console.log(visualDeck);
-// const deckContainer = document.getElementById('card-container');
-// deckContainer.innerHTML = visualDeck.join('');
+document.getElementById('card-container').innerHTML = visualDeck.join('');
+
 
 
 /*
@@ -125,15 +115,8 @@ const fakeDeckContainer = document.getElementById('stack-deck');
 fakeDeckContainer.innerHTML = fakeDeck.join('');
 */
 
-const number = [1, 2, 3, 4, 5, 6, 12, 34, 5, 1, 2, 3, 4];
 
-let obj = {};
-
-number.forEach(a => { obj[a] = a });
-
-number.reduce;
-
-//---------------TEST 1---------------
+/*----------------TEST 1---------------
 console.log("(---TEST 1----)")
 let deck1 = [];
 suits.forEach((suit, suitIndex) => {
@@ -149,8 +132,8 @@ suits.forEach((suit, suitIndex) => {
     })
 });
 console.log(deck1);
-
-//---------------TEST 2---------------
+*/
+/*----------------TEST 2---------------
 console.log("(---TEST 2----)");
 
 let deck2= [];
@@ -194,14 +177,8 @@ deck2.forEach(card => {
 
 console.log(visualDeck2);
 document.getElementById('card-container').innerHTML = visualDeck2.join('');
-
-
-
-
-
-
-
-//---------------TEST 3---------------
+*/
+/* ---------------TEST 3---------------
 console.log("(---TEST 3----)");
 class Card {
     constructor(suit,suitSymbol,value,valueSymbol){
@@ -241,3 +218,4 @@ class Deck {
 let deck3 = new Deck();
 deck3.createDeck();
 console.log(deck3.myDeck);
+*/
