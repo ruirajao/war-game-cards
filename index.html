@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,25 +8,58 @@
     <title>war-game</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div class= "container">
-        <h1>Welcome to the war-game</h1>
+    <div class="container">
+        <div class="header">
+            <h>WELCOME TO THE WAR GAME</h>
+            <button id="shuffle">Shuffle</button>
+            <button id="reset">Reset</button>
+        </div>
+
+        <div class="board-container">
+            <div class="player-1-deck-title">
+                <h3>PLAYER 1 DECK</h>
+            </div>
+            <div class="player-1-cards-title">
+                <h3>PLAYER 1 PLAY</h>
+            </div>
+            <div class="player-2-cards-title">
+                <h3>PLAYER 2 PLAY</h>
+            </div>
+            <div class="player-2-deck-title">
+                <h3>PLAYER 2 DECK</h>
+            </div>
+
+            <div class="player-1-deck">
+                1 DECK
+                <div id="player1Deck-container"></div>
+            </div>
+
+            <div class="player-1-cards">
+                6
+            </div>
+            <div class="player-2-cards">
+                7
+            </div>
+            <div class="player-2-deck">
+                2 DECK
+                <div id="player2Deck-container"></div>
+            </div>
+        </div>
         <div id="card-container"></div>
+    </div>
 
-        <!-- <h1>Shuffled deck:</h1>
+
+    <!-- <h1>Shuffled deck:</h1>
         <div id="shuffled-container"></div>
-
-        <h1>Player 1 Deck:</h1>
-        <div id="player1Deck-container"></div>
-
-        <h1>Player 2 Deck:</h1>
-        <div id="player2Deck-container"></div>
 
         <h1>Stack deck</h1>
         <div id="stack-deck"></div> -->
     </div>
-    
- 
-    <script src="script.js"></script>
+
+
+    <script defer src="script.js"></script>
 </body>
+
 </html>

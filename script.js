@@ -45,7 +45,7 @@ document.getElementById('card-container').innerHTML = visualDeck.join('');
 
 
 
-/*
+
 //------------Shuffled deck------------
 let k = 0;
 let randomNumber = Math.floor(Math.random() * 52);
@@ -61,8 +61,8 @@ function shuffle(deck) {
 
 const shuffledDeck = shuffle(deck);
 
-const shuffledDeckContainer = document.getElementById('shuffled-container');
-shuffledDeckContainer.innerHTML = shuffledDeck.join('');
+// const shuffledDeckContainer = document.getElementById('shuffled-container');
+// shuffledDeckContainer.innerHTML = shuffledDeck.join('');
 
 const player1 = [];
 const player2 = [];
@@ -84,7 +84,10 @@ player1DeckContainer.innerHTML = player1.join('');
 const player2DeckContainer = document.getElementById('player2Deck-container');
 player2DeckContainer.innerHTML = player2.join('');
 
+console.log(player1DeckContainer);
+console.log(player2DeckContainer);
 
+/*
 //------------Stacking cards deck------------
 let fakeDeck = [];
 
