@@ -50,16 +50,15 @@ document.getElementById('card-container').innerHTML = visualDeck.join('');
 let k = 0;
 let randomNumber = Math.floor(Math.random() * 52);
 
-function shuffle(deck) {
-    for (let i = deck.length - 1; i > 0; i--) {
+function shuffle(anyDeck) {
+    for (let i = anyDeck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [deck[i], deck[j]] = [deck[j], deck[i]];
+        [anyDeck[i], anyDeck[j]] = [anyDeck[j], anyDeck[i]];
     }
-    return deck;
+    return anyDeck;
 }
 
-
-const shuffledDeck = shuffle(deck);
+const shuffledDeck = shuffle(visualDeck);
 
 // const shuffledDeckContainer = document.getElementById('shuffled-container');
 // shuffledDeckContainer.innerHTML = shuffledDeck.join('');
@@ -68,10 +67,10 @@ const player1 = [];
 const player2 = [];
 
 //------------Shuffled deck for each player------------
-function deal(deck, player1, player2) {
-    const halfDeckLength = Math.floor(deck.length / 2);
-    let player1Deck = deck.slice(0, halfDeckLength);
-    let player2Deck = deck.slice(halfDeckLength);
+function deal(anyDeck, player1, player2) {
+    const halfDeckLength = Math.floor(anyDeck.length / 2);
+    let player1Deck = anyDeck.slice(0, halfDeckLength);
+    let player2Deck = anyDeck.slice(halfDeckLength);
     player1.push(...player1Deck);
     player2.push(...player2Deck);
 }
@@ -84,8 +83,21 @@ player1DeckContainer.innerHTML = player1.join('');
 const player2DeckContainer = document.getElementById('player2Deck-container');
 player2DeckContainer.innerHTML = player2.join('');
 
-console.log(player1DeckContainer);
+console.log("player1" + player1);
 console.log(player2DeckContainer);
+
+player1Card = player1[0];
+console.log(player1Card);
+
+player2Card = player2[0];
+console.log(player2Card);
+
+const player1play = document.getElementById('player-1-play');
+player1play.innerHTML = player1Card;
+
+const player2play = document.getElementById('player-2-play');
+player2play.innerHTML = player2Card;
+
 
 /*
 //------------Stacking cards deck------------
