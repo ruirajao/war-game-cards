@@ -74,11 +74,11 @@ function deal(anyDeck, deck1, deck2) {
 
 deal(shuffledDeck, p1Deck, p2Deck);
 
-const p1DeckContainer = document.getElementById('player1Deck-container');
-p1DeckContainer.innerHTML = p1Deck.join('');
+// const p1DeckContainer = document.getElementById('player1Deck-container');
+// p1DeckContainer.innerHTML = p1Deck.join('');
 
-const p2DeckContainer = document.getElementById('player2Deck-container');
-p2DeckContainer.innerHTML = p2Deck.join('');
+// const p2DeckContainer = document.getElementById('player2Deck-container');
+// p2DeckContainer.innerHTML = p2Deck.join('');
 
 p1FirstCard = p1Deck[0];
 const p1Play = document.getElementById('player-1-play');
@@ -87,9 +87,6 @@ p1Play.innerHTML = p1FirstCard;
 p2FirstCard = p2Deck[0];
 const p2Play = document.getElementById('player-2-play');
 p2Play.innerHTML = p2FirstCard;
-
-
-
 
 //------------Stacking cards deck------------
 // let fakeStackDeck = [];
@@ -117,6 +114,9 @@ p1Deck.forEach(card => {
     )
 })
 
+const numOfCardsLeftP1 = p1FakeDeckStack.length;
+const numOfCardsLeftElemP1 = document.getElementById("numOfCardsLeftP1");
+numOfCardsLeftElemP1.innerHTML = `Number of cards left: ${numOfCardsLeftP1}`;
 
 const p1FakeDeckStackContainer = document.getElementById('p1-stack-deck');
 p1FakeDeckStackContainer.innerHTML = p1FakeDeckStack.join('');
@@ -140,6 +140,10 @@ p2Deck.forEach(card => {
     )
 })
 
+const numOfCardsLeftP2 = p2FakeDeckStack.length;
+const numOfCardsLeftElemP2 = document.getElementById("numOfCardsLeftP2");
+numOfCardsLeftElemP2.innerHTML = `Number of cards left: ${numOfCardsLeftP2}`;
+
 const p2FakeDeckStackContainer = document.getElementById('p2-stack-deck');
 
 p2FakeDeckStackContainer.innerHTML = p2FakeDeckStack.join('');
@@ -151,7 +155,6 @@ p2fakeCards.forEach((card, index) => {
   const y = index + 1;
   card.style.transform = `translateX(${-x}px) translateY(${y}px)`;
 });
-
 
 
 
