@@ -189,7 +189,7 @@
 .card-back img {
   width: 100%;
   height: 100%;
-  object-fit:contain;
+  object-fit:cover;
 }
 
 
@@ -208,90 +208,27 @@
 }
 
 
-
-
 /* ISOMETRIC DECK */
 #stack-deck {
   position: relative;
 }
 
-/* #stack-deck {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-} */
-
 .fake-card {
+  width: 100px;
+  height: 150px;
   position: absolute;
   top: 20px;
   left: 20px;
   z-index: 1;
-  width: 100px;
-  height: 150px;
   background-color: white;
-  border: 2px solid black;
+  border: 1px solid grey;
   border-radius: 10px;
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-
-top.suit.♠, .suit.♣ {
-  color:black;
+.fake-card img {
+  width: 100%;
+  height: 100%;
+  object-fit:cover;
 }
-
-.suit.♥, .suit.♦ {
-  color:red;
-}
-
-
-.fake-card:nth-child(2) {
-  top: 22px;
-  left: 22px;
-  z-index: 2;
-}
-
-.fake-card:nth-child(3) {
-  top: 24px;
-  left: 24px;
-  z-index: 3;
-}
-
-.fake-card:nth-child(4) {
-  top: 26px;
-  left: 26px;
-  z-index: 4;
-}
-
-.fake-card:nth-child(5) {
-  top: 28px;
-  left: 28px;
-  z-index: 5;
-}
-.fake-card:nth-child(6) {
-  top: 30px;
-  left: 30px;
-  z-index: 6;
-}
-.fake-card:nth-child(7) {
-  top: 32px;
-  left: 32px;
-  z-index: 7;
-}
-.fake-card:nth-child(8) {
-  top: 34px;
-  left: 34px;
-  z-index: 8;
-}
-.fake-card:nth-child(9) {
-  top: 36px;
-  left: 36px;
-  z-index: 9;
-}
-.fake-card:nth-child(10) {
-  top: 38px;
-  left: 38px;
-  z-index: 10;
-}
-
-  

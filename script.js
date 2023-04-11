@@ -41,9 +41,7 @@ deck.forEach(card => {
 })
 
 console.log(visualDeck);
-document.getElementById('card-container').innerHTML = visualDeck.join('');
-
-
+// document.getElementById('card-container').innerHTML = visualDeck.join('');
 
 
 //------------Shuffled deck------------
@@ -63,72 +61,80 @@ const shuffledDeck = shuffle(visualDeck);
 // const shuffledDeckContainer = document.getElementById('shuffled-container');
 // shuffledDeckContainer.innerHTML = shuffledDeck.join('');
 
-const player1 = [];
-const player2 = [];
+const p1Deck = [];
+const p2Deck = [];
 
 //------------Shuffled deck for each player------------
-function deal(anyDeck, player1, player2) {
+function deal(anyDeck, deck1, deck2) {
     const halfDeckLength = Math.floor(anyDeck.length / 2);
-    let player1Deck = anyDeck.slice(0, halfDeckLength);
-    let player2Deck = anyDeck.slice(halfDeckLength);
-    player1.push(...player1Deck);
-    player2.push(...player2Deck);
+    let firstHalf = anyDeck.slice(0, halfDeckLength);
+    let secondHalf = anyDeck.slice(halfDeckLength);
+    p1Deck.push(...firstHalf);
+    p2Deck.push(...secondHalf);
 }
 
-deal(shuffledDeck, player1, player2);
+deal(shuffledDeck, p1Deck, p2Deck);
 
-const player1DeckContainer = document.getElementById('player1Deck-container');
-player1DeckContainer.innerHTML = player1.join('');
+const p1DeckContainer = document.getElementById('player1Deck-container');
+p1DeckContainer.innerHTML = p1Deck.join('');
 
-const player2DeckContainer = document.getElementById('player2Deck-container');
-player2DeckContainer.innerHTML = player2.join('');
+const p2DeckContainer = document.getElementById('player2Deck-container');
+p2DeckContainer.innerHTML = p2Deck.join('');
 
-console.log("player1" + player1);
-console.log(player2DeckContainer);
+p1FirstCard = p1Deck[0];
+const p1Play = document.getElementById('player-1-play');
+p1Play.innerHTML = p1FirstCard;
 
-player1Card = player1[0];
-console.log(player1Card);
-
-player2Card = player2[0];
-console.log(player2Card);
-
-const player1play = document.getElementById('player-1-play');
-player1play.innerHTML = player1Card;
-
-const player2play = document.getElementById('player-2-play');
-player2play.innerHTML = player2Card;
+p2FirstCard = p2Deck[0];
+const p2Play = document.getElementById('player-2-play');
+p2Play.innerHTML = p2FirstCard;
 
 
-/*
+
+
 //------------Stacking cards deck------------
-let fakeDeck = [];
+// let fakeStackDeck = [];
 
-for (let i = 0; i < suits.length; i++) {
-    for (let j = 0; j < values.length; j++) {
-        const fakeCard = `
-          <div class="fake-card">
-            <div class="top-left-values">
-              <p class="value">${values[j]}</p>
-              <p class="suit.${suits[i]}">${suits[i]}</p>
-            </div>
-            <div class="middle-suit">
-              <p class="suit.${suits[i]}">${suits[i]}</p>
-            </div>
-            <div class="bottom-right-values">
-              <p class="value">${values[j]}</p>
-              <p class="suit.${suits[i]}">${suits[i]}</p>
-            </div>
-            <div class="card-back">
+// deck.forEach(card => {
+//     fakeStackDeck.push(
+//         `<div class="fake-card">
+//             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
+//         </div>`
+//     )
+// });
+
+// console.log(fakeStackDeck);
+// const fakeDeckContainer = document.getElementById('stack-deck');
+// fakeDeckContainer.innerHTML = fakeStackDeck.join('');
+
+
+p1FakeDeckStack = [];
+
+p1Deck.forEach(card => {
+    p1FakeDeckStack.push(
+        `<div class="fake-card">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
-            </div>
-          </div>
-        `;
-        fakeDeck.push(fakeCard);
-    }
-}
-const fakeDeckContainer = document.getElementById('stack-deck');
-fakeDeckContainer.innerHTML = fakeDeck.join('');
-*/
+        </div>`
+    )
+})
+
+console.log(p1FakeDeckStack);
+const p1FakeDeckStackContainer = document.getElementById('stack-deck');
+p1FakeDeckStackContainer.innerHTML = p1FakeDeckStack.join('');
+
+const fakeCards = document.querySelectorAll('.fake-card');
+
+fakeCards.forEach((card, index) => {
+  const x = index + 1;
+  const y = index + 1;
+  card.style.transform = `translateX(${x}px) translateY(${y}px)`;
+});
+
+
+
+
+
+
 
 
 /*----------------TEST 1---------------
