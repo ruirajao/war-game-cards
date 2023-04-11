@@ -6,7 +6,7 @@ const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K
 let deck = [];
 
 
-//------------Shuffled deck------------
+//------------Cards deck with all properties------------
 suits.forEach((suit, suitIndex) => {
     values.forEach((value, valuesIndex) => {
         deck.push({
@@ -20,7 +20,7 @@ suits.forEach((suit, suitIndex) => {
 });
 console.log(deck);
 
-//------------Shuffled deck------------
+//------------ Array with 52 html cards------------
 let visualDeck = [];
 deck.forEach(card => {
     visualDeck.push(
@@ -42,8 +42,9 @@ deck.forEach(card => {
         </div>`
     )
 })
+console.log(visualDeck);
 
-//------------Shuffled deck------------
+//------------Shuffled deck (only html) ------------
 let k = 0;
 let randomNumber = Math.floor(Math.random() * 52);
 
@@ -57,13 +58,12 @@ function shuffle(anyDeck) {
 
 const shuffledDeck = shuffle(visualDeck);
 
-// const shuffledDeckContainer = document.getElementById('shuffled-container');
-// shuffledDeckContainer.innerHTML = shuffledDeck.join('');
 
+//------------Shuffled deck for each player (only html)------------
 const p1Deck = [];
 const p2Deck = [];
 
-//------------Shuffled deck for each player------------
+
 function deal(anyDeck, deck1, deck2) {
     const halfDeckLength = Math.floor(anyDeck.length / 2);
     let firstHalf = anyDeck.slice(0, halfDeckLength);
@@ -74,11 +74,6 @@ function deal(anyDeck, deck1, deck2) {
 
 deal(shuffledDeck, p1Deck, p2Deck);
 
-const p1DeckContainer = document.getElementById('player1Deck-container');
-p1DeckContainer.innerHTML = p1Deck.join('');
-
-const p2DeckContainer = document.getElementById('player2Deck-container');
-p2DeckContainer.innerHTML = p2Deck.join('');
 
 p1FirstCard = p1Deck[0];
 const p1Play = document.getElementById('player-1-play');
@@ -87,24 +82,6 @@ p1Play.innerHTML = p1FirstCard;
 p2FirstCard = p2Deck[0];
 const p2Play = document.getElementById('player-2-play');
 p2Play.innerHTML = p2FirstCard;
-
-
-
-
-//------------Stacking cards deck------------
-// let fakeStackDeck = [];
-
-// deck.forEach(card => {
-//     fakeStackDeck.push(
-//         `<div class="fake-card">
-//             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
-//         </div>`
-//     )
-// });
-
-// console.log(fakeStackDeck);
-// const fakeDeckContainer = document.getElementById('stack-deck');
-// fakeDeckContainer.innerHTML = fakeStackDeck.join('');
 
 
 p1FakeDeckStack = [];
@@ -116,7 +93,6 @@ p1Deck.forEach(card => {
         </div>`
     )
 })
-
 
 const p1FakeDeckStackContainer = document.getElementById('p1-stack-deck');
 p1FakeDeckStackContainer.innerHTML = p1FakeDeckStack.join('');
@@ -151,6 +127,31 @@ p2fakeCards.forEach((card, index) => {
   const y = index + 1;
   card.style.transform = `translateX(${-x}px) translateY(${y}px)`;
 });
+
+
+let counter = 0;
+function play() {
+    console.log("Hello world!")
+    counter++;
+    console.log(counter);
+
+    let counter;
+    if (counter===0) {
+        //CreateDeck();
+        //Shuffle();
+    counter ++;
+    } else {
+
+    }
+    
+    //DealEachCard();
+    //CheckValues();
+        //CheckWinner();
+        //CheckWar();
+            //Deal3BackCards() & DealEachCard();
+        //UpdateCardsLeft();       
+}
+
 
 
 
