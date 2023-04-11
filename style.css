@@ -24,7 +24,9 @@
 }
 
 /* HEADER - BUTTONS */
-#shuffle, #reset {
+#play, #reset {
+  height: 50px;
+  width: 100px;
   background-color: white;
   color: black;
   border-style: solid;
@@ -34,8 +36,9 @@
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size: large;
 }
-#shuffle:hover {
+#play:hover {
   background-color: lightgreen;
 }
 #reset:hover {
@@ -209,16 +212,16 @@
 
 
 /* ISOMETRIC DECK */
-#stack-deck {
+#p1-stack-deck, #p2-stack-deck {
   position: relative;
 }
 
-.fake-card {
+.p1-fake-card {
   width: 100px;
   height: 150px;
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 50px;
   z-index: 1;
   background-color: white;
   border: 1px solid grey;
@@ -227,7 +230,21 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.fake-card img {
+.p2-fake-card {
+  width: 100px;
+  height: 150px;
+  position: absolute;
+  top: 20px;
+  right: 50px;
+  z-index: 1;
+  background-color: white;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.p1-fake-card img, .p2-fake-card img {
   width: 100%;
   height: 100%;
   object-fit:cover;

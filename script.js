@@ -5,6 +5,8 @@ const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', 
 const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 let deck = [];
 
+
+//------------Shuffled deck------------
 suits.forEach((suit, suitIndex) => {
     values.forEach((value, valuesIndex) => {
         deck.push({
@@ -18,6 +20,7 @@ suits.forEach((suit, suitIndex) => {
 });
 console.log(deck);
 
+//------------Shuffled deck------------
 let visualDeck = [];
 deck.forEach(card => {
     visualDeck.push(
@@ -39,10 +42,6 @@ deck.forEach(card => {
         </div>`
     )
 })
-
-console.log(visualDeck);
-// document.getElementById('card-container').innerHTML = visualDeck.join('');
-
 
 //------------Shuffled deck------------
 let k = 0;
@@ -112,23 +111,47 @@ p1FakeDeckStack = [];
 
 p1Deck.forEach(card => {
     p1FakeDeckStack.push(
-        `<div class="fake-card">
+        `<div class="p1-fake-card">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
         </div>`
     )
 })
 
-console.log(p1FakeDeckStack);
-const p1FakeDeckStackContainer = document.getElementById('stack-deck');
+
+const p1FakeDeckStackContainer = document.getElementById('p1-stack-deck');
 p1FakeDeckStackContainer.innerHTML = p1FakeDeckStack.join('');
 
-const fakeCards = document.querySelectorAll('.fake-card');
+const p1fakeCards = document.querySelectorAll('.p1-fake-card');
 
-fakeCards.forEach((card, index) => {
+p1fakeCards.forEach((card, index) => {
   const x = index + 1;
   const y = index + 1;
   card.style.transform = `translateX(${x}px) translateY(${y}px)`;
 });
+
+
+p2FakeDeckStack = [];
+
+p2Deck.forEach(card => {
+    p2FakeDeckStack.push(
+        `<div class="p2-fake-card">
+            <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
+        </div>`
+    )
+})
+
+const p2FakeDeckStackContainer = document.getElementById('p2-stack-deck');
+
+p2FakeDeckStackContainer.innerHTML = p2FakeDeckStack.join('');
+
+const p2fakeCards = document.querySelectorAll('.p2-fake-card');
+
+p2fakeCards.forEach((card, index) => {
+  const x = index + 1;
+  const y = index + 1;
+  card.style.transform = `translateX(${-x}px) translateY(${y}px)`;
+});
+
 
 
 
