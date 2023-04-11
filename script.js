@@ -6,7 +6,7 @@ const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K
 let deck = [];
 
 
-//------------Shuffled deck------------
+//------------Cards deck with all properties------------
 suits.forEach((suit, suitIndex) => {
     values.forEach((value, valuesIndex) => {
         deck.push({
@@ -20,7 +20,7 @@ suits.forEach((suit, suitIndex) => {
 });
 console.log(deck);
 
-//------------Shuffled deck------------
+//------------ Array with 52 html cards------------
 let visualDeck = [];
 deck.forEach(card => {
     visualDeck.push(
@@ -42,8 +42,9 @@ deck.forEach(card => {
         </div>`
     )
 })
+console.log(visualDeck);
 
-//------------Shuffled deck------------
+//------------Shuffled deck (only html) ------------
 let k = 0;
 let randomNumber = Math.floor(Math.random() * 52);
 
@@ -57,13 +58,12 @@ function shuffle(anyDeck) {
 
 const shuffledDeck = shuffle(visualDeck);
 
-// const shuffledDeckContainer = document.getElementById('shuffled-container');
-// shuffledDeckContainer.innerHTML = shuffledDeck.join('');
 
+//------------Shuffled deck for each player (only html)------------
 const p1Deck = [];
 const p2Deck = [];
 
-//------------Shuffled deck for each player------------
+
 function deal(anyDeck, deck1, deck2) {
     const halfDeckLength = Math.floor(anyDeck.length / 2);
     let firstHalf = anyDeck.slice(0, halfDeckLength);
@@ -155,6 +155,31 @@ p2fakeCards.forEach((card, index) => {
   const y = index + 1;
   card.style.transform = `translateX(${-x}px) translateY(${y}px)`;
 });
+
+
+let counter = 0;
+function play() {
+    console.log("Hello world!")
+    counter++;
+    console.log(counter);
+
+    let counter;
+    if (counter===0) {
+        //CreateDeck();
+        //Shuffle();
+    counter ++;
+    } else {
+
+    }
+    
+    //DealEachCard();
+    //CheckValues();
+        //CheckWinner();
+        //CheckWar();
+            //Deal3BackCards() & DealEachCard();
+        //UpdateCardsLeft();       
+}
+
 
 
 
