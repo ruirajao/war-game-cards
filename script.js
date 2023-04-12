@@ -63,6 +63,18 @@ function shuffle() {
     drawFakeStacks(p1Deck, p2Deck);
 }
 
+function newGame(){
+    let button = document.querySelector(".play-again");
+        let popup_p1 = document.querySelector(".popup-p1");
+        let popup_p2 = document.querySelector(".popup-p2");
+
+        button.onclick = function(){
+            popup_p1.style.display = "none";
+            popup_p2.style.display = "none";
+        }
+        shuffle();
+}
+
 function play() {
 
     //desenha as 1ªas cartas
