@@ -101,6 +101,7 @@ function play() {
     drawFakeStacks(p1Deck, p2Deck);
     counter++;
     console.log("counter:" + counter);
+    checkWinner();
     return;
 
     //DealEachCard();
@@ -240,15 +241,7 @@ function p1PlayWin() {
     while (tempWonCards.length > 0) {
         p1Deck.push(tempWonCards.shift());
     }
-
-    p1Popup = `<h2>PLAYER 1 WON</h2>
-    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
-    const p1Win = document.getElementById("popup-Container").querySelector(".popup");;
-    p1Win.innerHTML = p1Popup;
-
-    //document.getElementById("popup-container").style.display = "flex";
-    
-    console.log("Player 1 won");
+    console.log("Player 1 won the Round");
 }
 
 function p2PlayWin() {
@@ -260,15 +253,7 @@ function p2PlayWin() {
     while (tempWonCards.length > 0) {
         p2Deck.push(tempWonCards.shift());
     }
-
-    p2Popup = `<h2>PLAYER 2 WON</h2>
-    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
-    const p2Win = document.getElementById("popup-Container").querySelector(".popup");;
-    p2Win.innerHTML = p2Popup;
-    
-    //document.getElementById("popup-container").style.display = "flex";
-
-    console.log("Player 2 won");
+    console.log("Player 2 won the Round");
 }
 
 function playWar() {
@@ -297,10 +282,38 @@ function playWar() {
     console.log("tempWonCards Length After WAR: " + tempWonCards.length);
 }
 
+function showPopup(){
+    const popup = document.querySelector(".popup-container");
+    popup.classList.add("show-container");
+}
 
+function hidePopup(){
+    const popup = document.querySelector(".popup-container");
+    popup.classList.remove("show-container");
+}
 
+function checkWinner(){
+    if(p1Deck.length === 0){
+        console.log("p2 won the game");
+        p2Popup = `<h2>PLAYER 2 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
+    p2Win.innerHTML = p2Popup;
+    
+    //document.getElementById("popup-container").style.display = "flex";
+    showPopup();
 
-
+    } else if(p2Deck.length === 0){
+        console.log("p1 won the game");
+        p2Popup = `<h2>PLAYER 2 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
+    p2Win.innerHTML = p2Popup;
+    
+    //document.getElementById("popup-container").style.display = "flex";
+    showPopup();
+    }
+}
 
 
 
