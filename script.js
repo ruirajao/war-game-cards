@@ -1,7 +1,7 @@
 
 const suits = ['spade', 'club', 'heart', 'diamond'];
 const suitsSymbol = ['♠', '♣', '♥', '♦'];
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+const values = [2, 3, 4, 5, 6, 7];
 const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 let deck = [];
 
@@ -50,8 +50,8 @@ console.log(deck);
 
 let counter = 0;
 let shuffleDeck = [];
-const p1Deck = [];
-const p2Deck = [];
+let p1Deck = [];
+let p2Deck = [];
 let tempWonCards = [];
 let gameOver = false;
 let valueDifference;
@@ -69,10 +69,10 @@ function newGame(){
         let popup_p1 = document.querySelector(".popup-p1");
         let popup_p2 = document.querySelector(".popup-p2");
 
-        button.onclick = function(){
-            popup_p1.style.display = "none";
-            popup_p2.style.display = "none";
-        }
+        hidePopup();
+
+        p1Deck=[];
+        p2Deck=[];
         shuffle();
 }
 
@@ -276,7 +276,6 @@ function playWar() {
         tempWonCards.push(p2Deck.shift());
     }
 
-    drawFakeStacks(tempWonCards);
 
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
     console.log("tempWonCards Length After WAR: " + tempWonCards.length);
