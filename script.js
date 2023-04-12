@@ -1,8 +1,10 @@
 
 const suits = ['spade', 'club', 'heart', 'diamond'];
 const suitsSymbol = ['♠', '♣', '♥', '♦'];
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+// const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+// const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const values = [2, 2, 2, 3, 3,3,3,4,4,4];
+const valuesSymbol = ['2', '2',"2", "2", "3", "3","3","3","4","4","4"];
 let deck = [];
 
 
@@ -74,6 +76,8 @@ function play() {
     console.log(valueDifference);
 
     console.log("tempWonCards Length Before Switch: " + tempWonCards.length);
+
+
     switch (true) {
         case valueDifference > 0:
             p1PlayWin();
@@ -172,13 +176,14 @@ function drawFirstCards(deck1, deck2) {
 //Draws fake stacking deck
 function drawFakeStacks(deck1, deck2) {
     p1FakeDeckStack = [];
-    deck1.forEach(card => {
+    console.log(deck1.length);
+    for (let i = 0; i < deck1.length; i++) {
         p1FakeDeckStack.push(
             `<div class="p1-fake-card">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
         </div>`
         )
-    })
+    }
 
     const p1FakeDeckStackContainer = document.getElementById('p1-stack-deck');
     p1FakeDeckStackContainer.innerHTML = p1FakeDeckStack.join('');
@@ -194,13 +199,13 @@ function drawFakeStacks(deck1, deck2) {
     numOfCardsLeftElemP1.innerHTML = `Number of cards left: ${numOfCardsLeftP1}`;
 
     p2FakeDeckStack = [];
-    deck2.forEach(card => {
+    for (let i = 0; i < deck2.length; i++) {
         p2FakeDeckStack.push(
             `<div class="p2-fake-card">
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
-        </div>`
+            </div>`
         )
-    })
+    }
 
     const p2FakeDeckStackContainer = document.getElementById('p2-stack-deck');
 
@@ -245,6 +250,9 @@ function p2PlayWin() {
 }
 
 function playWar() {
+    showWarDeck();
+    drawWarFakeStack(tempWonCards);
+    
     console.log("WAR!");
     if (p1Deck.length < 3) {
         //TODO
@@ -262,11 +270,58 @@ function playWar() {
         tempWonCards.push(p2Deck.shift());
     }
 
-    drawFakeStacks(tempWonCards);
-
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
     console.log("tempWonCards Length After WAR: " + tempWonCards.length);
 }
+
+function showWarDeck() {
+    const warDecks = document.querySelectorAll('.war-deck');
+    const warCards = document.querySelectorAll('.war-card');
+
+    // Add a class to the war deck to display it
+    warDecks.forEach(deck => { deck.classList.add("show-deck"); });
+
+    // Iterate over each war card and add a class to reveal it
+    warCards.forEach(card => { card.classList.add("revealed"); });
+}
+
+function hideWarDeck() {
+    const warDeck = document.querySelector(".war-deck");
+    warDeck.classList.remove("show-deck");
+
+    const warCard = document.querySelector(".war-card");
+    warDeck.classList.remove("revealed");
+}
+
+function drawWarFakeStack(tempDeck) {
+    tempFakeWarDeck = [];
+
+    for (let i = 0; i < (tempDeck.length) / 2; i++) {
+        tempFakeWarDeck.push(
+            `<div class="war-card">
+            <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
+        </div>`
+        )
+    }
+
+    const p1WarDeckContainer = document.getElementById('p1-war-deck');
+    p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
+
+    const p2WarDeckContainer = document.getElementById('p2-war-deck');
+    p2WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
+
+
+    const warCards = document.querySelectorAll('.war-card');
+    warCards.forEach((card, index) => {
+        const x = index + 1;
+        const y = index + 1;
+        const angle = (index + 1) * 5; // change this value to adjust the amount of rotation
+        card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${angle}deg)`;
+    });
+}
+
+
+
 
 
 
