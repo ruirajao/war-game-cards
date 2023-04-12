@@ -240,6 +240,14 @@ function p1PlayWin() {
     while (tempWonCards.length > 0) {
         p1Deck.push(tempWonCards.shift());
     }
+
+    p1Popup = `<h2>PLAYER 1 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p1Win = document.getElementById("popup-Container").querySelector(".popup");;
+    p1Win.innerHTML = p1Popup;
+
+    //document.getElementById("popup-container").style.display = "flex";
+    
     console.log("Player 1 won");
 }
 
@@ -253,6 +261,13 @@ function p2PlayWin() {
         p2Deck.push(tempWonCards.shift());
     }
 
+    p2Popup = `<h2>PLAYER 2 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p2Win = document.getElementById("popup-Container").querySelector(".popup");;
+    p2Win.innerHTML = p2Popup;
+    
+    //document.getElementById("popup-container").style.display = "flex";
+
     console.log("Player 2 won");
 }
 
@@ -261,11 +276,13 @@ function playWar() {
     if (p1Deck.length < 3) {
         //TODO
         console.log("P1: Not enough cards to play WAR!");
+        p2PlayWin();
         return;
     }
     if (p2Deck.length < 3) {
         //TODO
         console.log("P2: Not enough cards to play WAR!");
+        p1PlayWin();
         return;
     }
 
