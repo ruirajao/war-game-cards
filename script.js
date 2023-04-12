@@ -18,7 +18,6 @@ suits.forEach((suit, suitIndex) => {
         });
     })
 });
-console.log("Before shuffle:")
 console.log(deck);
 
 
@@ -50,76 +49,81 @@ console.log(deck);
 //------------Play(): GAME LOGIC ----------
 
 let counter = 0;
+let shuffleDeck = [];
+const p1Deck = [];
+const p2Deck = [];
+let tempWonCards = [];
+let gameOver = false;
+
+
+function shuffle() {
+    console.log("-----shuffle-----");
+    shuffledDeck = shuffleOriginalDeck(deck);
+    dealPlayerDecks(shuffledDeck, p1Deck, p2Deck);
+    drawFakeStacks(p1Deck, p2Deck);
+}
+
 function play() {
-    console.log("Hello world!");
-    console.log("counter:" + counter);
-    let shuffleDeck = [];
-    const p1Deck = [];
-    const p2Deck = [];
-    let tempWonCards = [];
 
+    //desenha as 1ªas cartas
+    drawFirstCards(p1Deck, p2Deck);
+    console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
+        .length);
+    console.log("P1:" + p1Deck[0].value + "|" + "P2:" + p2Deck[0].value);
 
-    if (counter === 0) {
-        shuffledDeck = shuffle(deck);
-        dealPlayerDecks(shuffledDeck, p1Deck, p2Deck);
-        drawFirstCards(p1Deck, p2Deck);
-        drawFakeStacks(p1Deck, p2Deck);
-        console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
-            .length);
-        console.log("P1:" + p1Deck[0].value + "|" + "P2:" + p2Deck[0].value);
-
-        counter++;
-
-        //Player 1 win
-        if (p1Deck[0].value > p2Deck[0].value) {
-            tempWonCards.push(p2Deck.shift);
-
-            while (tempWonCards.length > 0) {
-                p1Deck.push(tempWonCards.shift());
-            }
-            
-            console.log("Player 1 won");
-
-            //Player 2 win
-        } else if (p2Deck[0].value > p1Deck[0].value) {
-            tempWonCards.push(p2Deck.shift);
-
-            while (tempWonCards.length > 0) {
-                p2Deck.push(tempWonCards.shift());
-            }
-
-            console.log("Player 2 won");
-
-            //WAR
-        } else {
-            console.log("WAR!");
-
-            if (p1Deck.length < 3) {
-                //TODO
-                console.log("P1: Not enough cards to play WAR!");
-                return;
-            }
-            if (p2Deck.length < 3) {
-                //TODO
-                console.log("P2: Not enough cards to play WAR!");
-                return;
-            }
-
-            for (let i = 0; i <= 2; i++) {
-                tempWonCards.push(p1Deck.shift());
-                tempWonCards.push(p2Deck.shift());
-            }
-            console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+    //Player 1 win
+    if (p1Deck[0].value > p2Deck[0].value) {
+        tempWonCards.push(p1Deck.shift());
+        tempWonCards.push(p2Deck.shift());
+        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+        
+        while (tempWonCards.length > 0) {
+            p1Deck.push(tempWonCards.shift());
         }
-        console.log("counter:"+ counter);
-        return;
+        console.log("Player 1 won");
+
+        //Player 2 win
+    } else if (p2Deck[0].value > p1Deck[0].value) {
+        tempWonCards.push(p2Deck.shift());
+        tempWonCards.push(p1Deck.shift());
+        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+
+        while (tempWonCards.length > 0) {
+            p2Deck.push(tempWonCards.shift());
+        }
+
+        console.log("Player 2 won");
+
+        //WAR
+    } else {
+        console.log("WAR!");
+
+        if (p1Deck.length < 3) {
+            //TODO
+            console.log("P1: Not enough cards to play WAR!");
+            return;
+        }
+        if (p2Deck.length < 3) {
+            //TODO
+            console.log("P2: Not enough cards to play WAR!");
+            return;
+        }
+
+        for (let i = 0; i <= 2; i++) {
+            tempWonCards.push(p1Deck.shift());
+            tempWonCards.push(p2Deck.shift());
+        }
+        drawFirstCards(p1Deck, p2Deck);
+        
+        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
     }
-    
-    if (counter=>1) {
-        console.log("Time to play the game!")
-        counter++;
-        console.log("counter:"+ counter);
-    }
+    drawFakeStacks(p1Deck, p2Deck);
+    console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
+        .length);
+    counter++;
+    console.log("counter:" + counter);
+    hasStarted = true;
+    return;
 
     //DealEachCard();
     //CheckValues();
@@ -127,14 +131,14 @@ function play() {
     //CheckWar();
     //Deal3BackCards() & DealEachCard();
     //UpdateCardsLeft();       
-    
+
 }
 
 
 
 //------------Shuffled deck (only html) ------------
 
-function shuffle(deck) {
+function shuffleOriginalDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [deck[i], deck[j]] = [deck[j], deck[i]];
@@ -174,7 +178,6 @@ function drawFirstCards(deck1, deck2) {
             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
             </div>
         </div>`;
-    console.log(p1FirstCard);
     const p1Play = document.getElementById('player-1-play');
     p1Play.innerHTML = p1FirstCard;
 
