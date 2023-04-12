@@ -54,6 +54,7 @@ const p1Deck = [];
 const p2Deck = [];
 let tempWonCards = [];
 let gameOver = false;
+let valueDifference;
 
 
 function shuffle() {
@@ -64,65 +65,30 @@ function shuffle() {
 }
 
 function play() {
-
-    //desenha as 1ªas cartas
+    console.log("-----play-----");
     drawFirstCards(p1Deck, p2Deck);
     console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
         .length);
     console.log("P1:" + p1Deck[0].value + "|" + "P2:" + p2Deck[0].value);
+    valueDifference = p1Deck[0].value - p2Deck[0].value;
+    console.log(valueDifference);
 
-    //Player 1 win
-    if (p1Deck[0].value > p2Deck[0].value) {
-        tempWonCards.push(p1Deck.shift());
-        tempWonCards.push(p2Deck.shift());
-        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
-        
-        while (tempWonCards.length > 0) {
-            p1Deck.push(tempWonCards.shift());
-        }
-        console.log("Player 1 won");
-
-        //Player 2 win
-    } else if (p2Deck[0].value > p1Deck[0].value) {
-        tempWonCards.push(p2Deck.shift());
-        tempWonCards.push(p1Deck.shift());
-        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
-
-        while (tempWonCards.length > 0) {
-            p2Deck.push(tempWonCards.shift());
-        }
-
-        console.log("Player 2 won");
-
-        //WAR
-    } else {
-        console.log("WAR!");
-
-        if (p1Deck.length < 3) {
-            //TODO
-            console.log("P1: Not enough cards to play WAR!");
-            return;
-        }
-        if (p2Deck.length < 3) {
-            //TODO
-            console.log("P2: Not enough cards to play WAR!");
-            return;
-        }
-
-        for (let i = 0; i <= 2; i++) {
-            tempWonCards.push(p1Deck.shift());
-            tempWonCards.push(p2Deck.shift());
-        }
-        drawFirstCards(p1Deck, p2Deck);
-        
-        console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+    console.log("tempWonCards Length Before Switch: " + tempWonCards.length);
+    switch (true) {
+        case valueDifference > 0:
+            p1PlayWin();
+            break;
+        case valueDifference < 0:
+            p2PlayWin();
+            break;
+        default:
+            playWar();
+            break;
     }
+
     drawFakeStacks(p1Deck, p2Deck);
-    console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
-        .length);
     counter++;
     console.log("counter:" + counter);
-    hasStarted = true;
     return;
 
     //DealEachCard();
@@ -253,6 +219,54 @@ function drawFakeStacks(deck1, deck2) {
     numOfCardsLeftElemP2.innerHTML = `Number of cards left: ${numOfCardsLeftP2}`;
 }
 
+function p1PlayWin() {
+    tempWonCards.push(p1Deck.shift());
+    tempWonCards.push(p2Deck.shift());
+    console.log("tempWonCards from P1Play: " + JSON.stringify(tempWonCards));
+
+    console.log("tempWonCards Length From p1PlayWin: " + tempWonCards.length);
+    while (tempWonCards.length > 0) {
+        p1Deck.push(tempWonCards.shift());
+    }
+    console.log("Player 1 won");
+}
+
+function p2PlayWin() {
+    tempWonCards.push(p2Deck.shift());
+    tempWonCards.push(p1Deck.shift());
+    console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+
+    console.log("tempWonCards Length From p2PlayWin: " + tempWonCards.length);
+    while (tempWonCards.length > 0) {
+        p2Deck.push(tempWonCards.shift());
+    }
+
+    console.log("Player 2 won");
+}
+
+function playWar() {
+    console.log("WAR!");
+    if (p1Deck.length < 3) {
+        //TODO
+        console.log("P1: Not enough cards to play WAR!");
+        return;
+    }
+    if (p2Deck.length < 3) {
+        //TODO
+        console.log("P2: Not enough cards to play WAR!");
+        return;
+    }
+
+    for (let i = 0; i <= 2; i++) {
+        tempWonCards.push(p1Deck.shift());
+        tempWonCards.push(p2Deck.shift());
+    }
+
+    drawFakeStacks(tempWonCards);
+
+    console.log("tempWonCards: " + JSON.stringify(tempWonCards));
+    console.log("tempWonCards Length After WAR: " + tempWonCards.length);
+}
 
 
 
