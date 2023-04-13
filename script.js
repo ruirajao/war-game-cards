@@ -1,10 +1,10 @@
 
 const suits = ['spade', 'club', 'heart', 'diamond'];
 const suitsSymbol = ['♠', '♣', '♥', '♦'];
-const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-// const values = [2, 2, 2, 3, 3,3,3,4,4,4];
-// const valuesSymbol = ["2","2","2", "3", "3","3","3","4","4","4"];
+// const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+// const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const values = [2, 3, 4, 5, 6, 7];
+const valuesSymbol = ["2", "3", "4", "5", "6", "7"];
 let deck = [];
 
 
@@ -40,24 +40,22 @@ function shuffle() {
     drawFakeStacks(p1Deck, p2Deck);
 }
 
-function newGame(){
+function newGame() {
     // let button = document.querySelector(".play-again");
     //     let popup_p1 = document.querySelector(".popup-p1");
     //     let popup_p2 = document.querySelector(".popup-p2");
-
-        hidePopup();
-
-        p1Deck=[];
-        p2Deck=[];
-        shuffle();
+    hidePopup();
+    reset();
 }
 
-function reset(){
-    counter=0;
-    valueDifference=0;
-    p1Deck=[];
-    p2Deck=[];
-    drawFakeStacks(p1Deck, p2Deck);
+function reset() {
+    counter = 0;
+    valueDifference = 0;
+    p1Deck = [];
+    p2Deck = [];
+    tempWonCards = [];
+    shuffle();
+    play();
 }
 
 function play() {
@@ -77,7 +75,7 @@ function play() {
             break;
     }
 
-    valueDifference=0;
+    valueDifference = 0;
     drawFakeStacks(p1Deck, p2Deck);
     counter++;
     console.log("counter:" + counter);
@@ -241,7 +239,7 @@ function p2PlayWin() {
 }
 
 function playWar() {
-    
+
     console.log("WAR!");
     if (p1Deck.length < 3) {
         //TODO
@@ -254,7 +252,7 @@ function playWar() {
         //TODO
         console.log("P2: Not enough cards to play WAR!");
         //p1PlayWin();
-        p1Winner;
+        p1Winner();
         return;
     }
 
@@ -283,7 +281,7 @@ function showWarDeck() {
 function hideWarDeck() {
     const warDeck1 = document.querySelector(".war-deck-1");
     warDeck1.classList.remove("show-deck")
-    ;
+        ;
     const warDeck2 = document.querySelector(".war-deck-2");
     warDeck1.classList.remove("show-deck");
 
@@ -335,7 +333,7 @@ function showWarDeck() {
 function hideWarDeck() {
     const warDeck1 = document.querySelector(".war-deck-1");
     warDeck1.classList.remove("show-deck")
-    ;
+        ;
     const warDeck2 = document.querySelector(".war-deck-2");
     warDeck1.classList.remove("show-deck");
 
@@ -372,7 +370,7 @@ function drawWarFakeStack(tempDeck) {
 
 
 
-function showPopup(){
+function showPopup() {
     const popup = document.querySelector(".popup-container");
     popup.classList.add("show-container");
 
@@ -385,7 +383,7 @@ function showPopup(){
     button_reset.disabled = true;
 }
 
-function hidePopup(){
+function hidePopup() {
     const popup = document.querySelector(".popup-container");
     popup.classList.remove("show-container");
 
@@ -398,29 +396,29 @@ function hidePopup(){
     button_reset.disabled = false;
 }
 
-function checkWinner(){
-    if(p1Deck.length === 0){
+function checkWinner() {
+    if (p1Deck.length === 0) {
         p2Winner();
-    } else if(p2Deck.length === 0){
+    } else if (p2Deck.length === 0) {
         p1Winner();
     }
 }
 
-function  p1Winner(){
+function p1Winner() {
     console.log("p1 won the game");
-        p2Popup = `<h2>PLAYER 2 WON</h2>
+    let popup = `<h2>PLAYER 1 WON</h2>
     <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
     const p2Win = document.getElementById("popup-container").querySelector(".popup");;
-    p2Win.innerHTML = p2Popup;
+    p2Win.innerHTML = popup;
     showPopup();
 }
 
-function p2Winner(){
+function p2Winner() {
     console.log("p2 won the game");
-        p2Popup = `<h2>PLAYER 2 WON</h2>
+    let popup = `<h2>PLAYER 2 WON</h2>
     <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
     const p2Win = document.getElementById("popup-container").querySelector(".popup");;
-    p2Win.innerHTML = p2Popup;
+    p2Win.innerHTML = popup;
     showPopup();
 }
 
