@@ -1,10 +1,10 @@
 
 const suits = ['spade', 'club', 'heart', 'diamond'];
 const suitsSymbol = ['♠', '♣', '♥', '♦'];
-// const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
-// const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-const values = [2, 2, 2, 3, 3,3,3,4,4,4];
-const valuesSymbol = ["2","2","2", "3", "3","3","3","4","4","4"];
+const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+// const values = [2, 2, 2, 3, 3,3,3,4,4,4];
+// const valuesSymbol = ["2","2","2", "3", "3","3","3","4","4","4"];
 let deck = [];
 
 
@@ -21,32 +21,6 @@ suits.forEach((suit, suitIndex) => {
     })
 });
 console.log(deck);
-
-
-//------------VISUAL DECK: Array with 52 html cards------------
-// let visualDeck = [];
-// deck.forEach(card => {
-//     visualDeck.push(
-//         `<div class="card-${card.suit}">
-//             <div class="top-left-values">
-//               <p class="value">${card.valueSymbol}</p>
-//               <p class="suit">${card.suitSymbol}</p>
-//             </div>
-//             <div class="middle-suit">
-//               <p class="suit">${card.suitSymbol}</p>
-//             </div>
-//             <div class="bottom-right-values">
-//               <p class="value">${card.valueSymbol}</p>
-//               <p class="suit">${card.suitSymbol}</p>
-//             </div>
-//             <div class="card-back">
-//             <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
-//             </div>
-//         </div>`
-//     )
-// })
-// console.log(visualDeck);
-
 
 //------------Play(): GAME LOGIC ----------
 
@@ -95,13 +69,6 @@ function play() {
     counter++;
     console.log("counter:" + counter);
     return;
-
-    //DealEachCard();
-    //CheckValues();
-    //CheckWinner();
-    //CheckWar();
-    //Deal3BackCards() & DealEachCard();
-    //UpdateCardsLeft();       
 
 }
 
@@ -284,19 +251,22 @@ function playWar() {
 }
 
 function showWarDeck() {
-    const warDecks = document.querySelectorAll('.war-deck');
+    const warDecks1 = document.querySelectorAll('.war-deck-1');
+    const warDecks2 = document.querySelectorAll('.war-deck-2');
     const warCards = document.querySelectorAll('.war-card');
 
     // Add a class to the war deck to display it
-    warDecks.forEach(deck => { deck.classList.add("show-deck"); });
+    warDecks1.forEach(deck => { deck.classList.add("show-deck"); });
+    warDecks2.forEach(deck => { deck.classList.add("show-deck"); });
 
-    // Iterate over each war card and add a class to reveal it
-    warCards.forEach(card => { card.classList.add("revealed"); });
 }
 
 function hideWarDeck() {
-    const warDeck = document.querySelector(".war-deck");
-    warDeck.classList.remove("show-deck");
+    const warDeck1 = document.querySelector(".war-deck-1");
+    warDeck1.classList.remove("show-deck")
+    ;
+    const warDeck2 = document.querySelector(".war-deck-2");
+    warDeck1.classList.remove("show-deck");
 
     const warCard = document.querySelector(".war-card");
     warDeck.classList.remove("revealed");
@@ -313,26 +283,24 @@ function drawWarFakeStack(tempDeck) {
         )
     }
 
-    // const p1WarDeckContainer = document.getElementById('p1-war-deck');
-    // p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
-
-    // const p2WarDeckContainer = document.getElementById('p2-war-deck');
-    // p2WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
-
     const p1WarDeckContainer = document.getElementById('p1-war-deck');
-    const p2WarDeckContainer = document.getElementById('p2-war-deck');
-
     p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
+
+    const p2WarDeckContainer = document.getElementById('p2-war-deck');
     p2WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
 
-
     const warCards = document.querySelectorAll('.war-card');
+
     warCards.forEach((card, index) => {
         const x = index + 1;
         const y = index + 1;
         const angle = (index + 1) * 5; // change this value to adjust the amount of rotation
         card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${angle}deg)`;
+ 
+        console.log("INDEX: " + index);
+        console.log(JSON.stringify.warCard);
     });
+
 }
 
 
