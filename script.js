@@ -65,9 +65,9 @@ function shuffle() {
 }
 
 function newGame(){
-    let button = document.querySelector(".play-again");
-        let popup_p1 = document.querySelector(".popup-p1");
-        let popup_p2 = document.querySelector(".popup-p2");
+    // let button = document.querySelector(".play-again");
+    //     let popup_p1 = document.querySelector(".popup-p1");
+    //     let popup_p2 = document.querySelector(".popup-p2");
 
         hidePopup();
 

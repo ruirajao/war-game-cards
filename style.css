@@ -291,3 +291,7 @@
   margin-top: auto;
   margin-bottom: 20px;
 }
+
+.play-again:hover{
+  background-color: rgb(114, 0, 0);
+}
