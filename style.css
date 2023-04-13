@@ -161,8 +161,10 @@
 }
 
 .middle-suit .suit {
-  font-size: 500%;
+  font-size: 200%;
 }
+
+
 
 .bottom-right-values {
   position: absolute;

@@ -20,7 +20,7 @@ suits.forEach((suit, suitIndex) => {
         });
     })
 });
-console.log(deck);
+
 
 //------------Play(): GAME LOGIC ----------
 
@@ -43,14 +43,7 @@ function shuffle() {
 function play() {
     console.log("-----play-----");
     drawFirstCards(p1Deck, p2Deck);
-    console.log("p1deck.length: " + p1Deck.length + "| p2deck.length: " + p2Deck
-        .length);
-    console.log("P1:" + p1Deck[0].value + "|" + "P2:" + p2Deck[0].value);
     valueDifference = p1Deck[0].value - p2Deck[0].value;
-    console.log(valueDifference);
-
-    console.log("tempWonCards Length Before Switch: " + tempWonCards.length);
-
 
     switch (true) {
         case valueDifference > 0:
@@ -98,7 +91,6 @@ function dealPlayerDecks(anyDeck, deck1, deck2) {
 //  Draws first card on board
 function drawFirstCards(deck1, deck2) {
     p1Card = deck1[0];
-    console.log(p1Card);
     p1FirstCard = `
         <div class="card-${p1Card.suit}">
             <div class="top-left-values">
@@ -165,6 +157,7 @@ function drawFakeStacks(deck1, deck2) {
     const numOfCardsLeftP1 = p1FakeDeckStack.length;
     const numOfCardsLeftElemP1 = document.getElementById("numOfCardsLeftP1");
     numOfCardsLeftElemP1.innerHTML = `Number of cards left: ${numOfCardsLeftP1}`;
+    console.log("NUMBER OF CARDS LEFT P1: " + numOfCardsLeftP1);
 
     p2FakeDeckStack = [];
     for (let i = 0; i < deck2.length; i++) {
@@ -190,6 +183,7 @@ function drawFakeStacks(deck1, deck2) {
     const numOfCardsLeftP2 = p2FakeDeckStack.length;
     const numOfCardsLeftElemP2 = document.getElementById("numOfCardsLeftP2");
     numOfCardsLeftElemP2.innerHTML = `Number of cards left: ${numOfCardsLeftP2}`;
+    console.log("NUMBER OF CARDS LEFT P2: " + numOfCardsLeftP2);
 }
 
 function p1PlayWin() {
@@ -197,14 +191,14 @@ function p1PlayWin() {
     tempWonCards.push(p2Deck.shift());
     console.log("tempWonCards from P1Play: " + JSON.stringify(tempWonCards));
 
-    console.log("tempWonCards Length From p1PlayWin: " + tempWonCards.length);
+    // console.log("tempWonCards Length From p1PlayWin: " + tempWonCards.length);
     while (tempWonCards.length > 0) {
         p1Deck.push(tempWonCards.shift());
     }
-    console.log("Player 1 won");
+    // console.log("Player 1 won");
     drawWarFakeStack(tempWonCards);
     hideWarDeck();
-    console.log("after p1 won war:"+ tempWonCards.size);
+    // console.log("after p1 won war:"+ tempWonCards.size);
 }
 
 function p2PlayWin() {
@@ -212,7 +206,7 @@ function p2PlayWin() {
     tempWonCards.push(p1Deck.shift());
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
 
-    console.log("tempWonCards Length From p2PlayWin: " + tempWonCards.length);
+    // console.log("tempWonCards Length From p2PlayWin: " + tempWonCards.length);
     while (tempWonCards.length > 0) {
         p2Deck.push(tempWonCards.shift());
     }
@@ -220,11 +214,10 @@ function p2PlayWin() {
     console.log("Player 2 won");
     drawWarFakeStack(tempWonCards);
     hideWarDeck();
-    console.log("after p1 won war:"+ tempWonCards.size);
+    // console.log("after p1 won war:"+ tempWonCards.size);
 }
 
 function playWar() {
-    
     
     console.log("WAR!");
     if (p1Deck.length < 3) {
@@ -247,17 +240,16 @@ function playWar() {
     drawWarFakeStack(tempWonCards);
 
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
-    console.log("tempWonCards Length After WAR: " + tempWonCards.length);
+    // console.log("tempWonCards Length After WAR: " + tempWonCards.length);
 }
 
 function showWarDeck() {
     const warDecks1 = document.querySelectorAll('.war-deck-1');
     const warDecks2 = document.querySelectorAll('.war-deck-2');
-    const warCards = document.querySelectorAll('.war-card');
 
-    // Add a class to the war deck to display it
     warDecks1.forEach(deck => { deck.classList.add("show-deck"); });
     warDecks2.forEach(deck => { deck.classList.add("show-deck"); });
+    // const warCards = document.querySelectorAll('.war-card');
 
 }
 
@@ -268,8 +260,8 @@ function hideWarDeck() {
     const warDeck2 = document.querySelector(".war-deck-2");
     warDeck1.classList.remove("show-deck");
 
-    const warCard = document.querySelector(".war-card");
-    warDeck.classList.remove("revealed");
+    // const warCard = document.querySelector(".war-card");
+    // warDeck.classList.remove("revealed");
 }
 
 function drawWarFakeStack(tempDeck) {
@@ -296,9 +288,6 @@ function drawWarFakeStack(tempDeck) {
         const y = index + 1;
         const angle = (index + 1) * 5; // change this value to adjust the amount of rotation
         card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${angle}deg)`;
- 
-        console.log("INDEX: " + index);
-        console.log(JSON.stringify.warCard);
     });
 
 }
@@ -314,106 +303,3 @@ function drawWarFakeStack(tempDeck) {
 
 
 
-/*----------------TEST 1---------------
-console.log("(---TEST 1----)")
-let deck1 = [];
-suits.forEach((suit, suitIndex) => {
-    values.forEach((value, valuesIndex) => {
-        const card1 = {
-            id: suitIndex * values.length + valuesIndex + 1,
-            suit: suit,
-            suitSymbol: suitsSymbol[suitIndex],
-            value: value,
-            valueSymbol: valuesSymbol[valuesIndex]
-        };
-        deck1.push(card1);
-    })
-});
-console.log(deck1);
-*/
-/*----------------TEST 2---------------
-console.log("(---TEST 2----)");
-
-let deck2= [];
-
-suits.forEach((suit, suitIndex) => {
-    values.forEach((value, valuesIndex) => {
-        deck2.push({
-            id: suitIndex * values.length + valuesIndex + 1,
-            suit: suit,
-            suitSymbol: suitsSymbol[suitIndex],
-            value: value,
-            valueSymbol: valuesSymbol[valuesIndex]
-        });
-    })
-});
-console.log(deck2);
-
-let visualDeck2 = [];
-
-
-deck2.forEach(card => {
-    visualDeck2.push(
-        `<div class="card-${card.suit}">
-            <div class="top-left-values">
-              <p class="value">${card.valueSymbol}</p>
-              <p class="suit">${card.suitSymbol}</p>
-            </div>
-            <div class="middle-suit">
-              <p class="suit">${card.suitSymbol}</p>
-            </div>
-            <div class="bottom-right-values">
-              <p class="value">${card.valueSymbol}</p>
-              <p class="suit">${card.suitSymbol}</p>
-            </div>
-            <div class="card-back">
-            <img src="https://media.licdn.com/dms/image/C560BAQF_9dT4QyqvWw/company-logo_200_200/0/1673266287812?e=2147483647&v=beta&t=BevULykGeF1oKA9bvQyuUm-HMcHiwTkcC-JrqwcoVsY" alt="Mindera logo">
-            </div>
-        </div>`
-    )
-})
-
-console.log(visualDeck2);
-document.getElementById('card-container').innerHTML = visualDeck2.join('');
-*/
-/* ---------------TEST 3---------------
-console.log("(---TEST 3----)");
-class Card {
-    constructor(suit,suitSymbol,value,valueSymbol){
-        this.suit = suit;
-        this.suitSymbol=suitSymbol;
-        this.value = value;
-        this.valueSymbol = valueSymbol;
-    }
-}
-
-class Deck {
-    suits3 = ['spade', 'club', 'heart', 'diamond'];
-    suitsSymbol3 = ['♠', '♣', '♥', '♦'];
-    values3 = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14'];
-    valuesSymbol3 = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
-
-    constructor() {
-        this.myDeck  = [];
-    }
-
-    createDeck() {
-        this.suits3.forEach((suit, suitIndex) => {
-            this.values3.forEach((value, valuesIndex) => {
-                const card3 = {
-                    id: suitIndex * values.length + valuesIndex + 1,
-                    suit: suit,
-                    suitSymbol: suitsSymbol[suitIndex],
-                    value: value,
-                    valueSymbol: valuesSymbol[valuesIndex]
-                };
-                this.myDeck.push(card3);
-            })
-        });
-    }
-}
-
-let deck3 = new Deck();
-deck3.createDeck();
-console.log(deck3.myDeck);
-*/
