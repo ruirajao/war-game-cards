@@ -290,6 +290,7 @@
   font-size: 16px;
   margin-top: auto;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .play-again:hover{
