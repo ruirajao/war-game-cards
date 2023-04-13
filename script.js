@@ -64,6 +64,8 @@ function shuffle() {
     shuffledDeck = shuffleOriginalDeck(deck);
     dealPlayerDecks(shuffledDeck, p1Deck, p2Deck);
     drawFakeStacks(p1Deck, p2Deck);
+    const button = document.getElementById("shuffle");
+    button.disabled = true;
 }
 
 function newGame(){
@@ -84,6 +86,8 @@ function reset(){
     p1Deck=[];
     p2Deck=[];
     drawFakeStacks(p1Deck, p2Deck);
+    const button = document.getElementById("shuffle");
+    button.disabled = false;
 }
 
 function play() {
