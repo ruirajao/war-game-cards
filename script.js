@@ -76,6 +76,12 @@ function newGame(){
         shuffle();
 }
 
+function reset(){
+    p1Deck=[];
+    p2Deck=[];
+    drawFakeStacks(p1Deck, p2Deck);
+}
+
 function play() {
     console.log("-----play-----");
     drawFirstCards(p1Deck, p2Deck);
