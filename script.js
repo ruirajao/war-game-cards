@@ -290,11 +290,27 @@ function playWar() {
 function showPopup(){
     const popup = document.querySelector(".popup-container");
     popup.classList.add("show-container");
+
+    const button_war = document.getElementById("play");
+    const button_shuffle = document.getElementById("shuffle");
+    const button_reset = document.getElementById("reset");
+
+    button_war.disabled = true;
+    button_shuffle.disabled = true;
+    button_reset.disabled = true;
 }
 
 function hidePopup(){
     const popup = document.querySelector(".popup-container");
     popup.classList.remove("show-container");
+
+    const button_war = document.getElementById("play");
+    const button_shuffle = document.getElementById("shuffle");
+    const button_reset = document.getElementById("reset");
+
+    button_war.disabled = false;
+    button_shuffle.disabled = false;
+    button_reset.disabled = false;
 }
 
 function checkWinner(){
