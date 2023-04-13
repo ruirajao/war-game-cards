@@ -267,13 +267,15 @@ function playWar() {
     if (p1Deck.length < 3) {
         //TODO
         console.log("P1: Not enough cards to play WAR!");
-        p2PlayWin();
+        //p2PlayWin();
+        p2Winner();
         return;
     }
     if (p2Deck.length < 3) {
         //TODO
         console.log("P2: Not enough cards to play WAR!");
-        p1PlayWin();
+        //p1PlayWin();
+        p1Winner;
         return;
     }
 
@@ -315,26 +317,31 @@ function hidePopup(){
 
 function checkWinner(){
     if(p1Deck.length === 0){
-        console.log("p2 won the game");
-        p2Popup = `<h2>PLAYER 2 WON</h2>
-    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
-    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
-    p2Win.innerHTML = p2Popup;
-    
-    //document.getElementById("popup-container").style.display = "flex";
-    showPopup();
-
+        p2Winner();
     } else if(p2Deck.length === 0){
-        console.log("p1 won the game");
-        p2Popup = `<h2>PLAYER 2 WON</h2>
-    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
-    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
-    p2Win.innerHTML = p2Popup;
-    
-    //document.getElementById("popup-container").style.display = "flex";
-    showPopup();
+        p1Winner();
     }
 }
+
+function  p1Winner(){
+    console.log("p1 won the game");
+        p2Popup = `<h2>PLAYER 2 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
+    p2Win.innerHTML = p2Popup;
+    showPopup();
+}
+
+function p2Winner(){
+    console.log("p2 won the game");
+        p2Popup = `<h2>PLAYER 2 WON</h2>
+    <button class="play-again" id="play-again" onclick="newGame()">PLAY AGAIN</button>`;
+    const p2Win = document.getElementById("popup-container").querySelector(".popup");;
+    p2Win.innerHTML = p2Popup;
+    showPopup();
+}
+
+
 
 
 
