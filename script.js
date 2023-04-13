@@ -79,6 +79,8 @@ function newGame(){
 }
 
 function reset(){
+    counter=0;
+    valueDifference=0;
     p1Deck=[];
     p2Deck=[];
     drawFakeStacks(p1Deck, p2Deck);
