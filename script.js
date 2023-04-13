@@ -4,7 +4,7 @@ const suitsSymbol = ['♠', '♣', '♥', '♦'];
 // const values = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
 // const valuesSymbol = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const values = [2, 2, 2, 3, 3,3,3,4,4,4];
-const valuesSymbol = ['2', '2',"2", "2", "3", "3","3","3","4","4","4"];
+const valuesSymbol = ["2","2","2", "3", "3","3","3","4","4","4"];
 let deck = [];
 
 
@@ -90,6 +90,7 @@ function play() {
             break;
     }
 
+    valueDifference=0;
     drawFakeStacks(p1Deck, p2Deck);
     counter++;
     console.log("counter:" + counter);
@@ -234,6 +235,9 @@ function p1PlayWin() {
         p1Deck.push(tempWonCards.shift());
     }
     console.log("Player 1 won");
+    drawWarFakeStack(tempWonCards);
+    hideWarDeck();
+    console.log("after p1 won war:"+ tempWonCards.size);
 }
 
 function p2PlayWin() {
@@ -247,11 +251,13 @@ function p2PlayWin() {
     }
 
     console.log("Player 2 won");
+    drawWarFakeStack(tempWonCards);
+    hideWarDeck();
+    console.log("after p1 won war:"+ tempWonCards.size);
 }
 
 function playWar() {
-    showWarDeck();
-    drawWarFakeStack(tempWonCards);
+    
     
     console.log("WAR!");
     if (p1Deck.length < 3) {
@@ -269,6 +275,9 @@ function playWar() {
         tempWonCards.push(p1Deck.shift());
         tempWonCards.push(p2Deck.shift());
     }
+
+    showWarDeck();
+    drawWarFakeStack(tempWonCards);
 
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
     console.log("tempWonCards Length After WAR: " + tempWonCards.length);
@@ -304,10 +313,16 @@ function drawWarFakeStack(tempDeck) {
         )
     }
 
-    const p1WarDeckContainer = document.getElementById('p1-war-deck');
-    p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
+    // const p1WarDeckContainer = document.getElementById('p1-war-deck');
+    // p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
 
+    // const p2WarDeckContainer = document.getElementById('p2-war-deck');
+    // p2WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
+
+    const p1WarDeckContainer = document.getElementById('p1-war-deck');
     const p2WarDeckContainer = document.getElementById('p2-war-deck');
+
+    p1WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
     p2WarDeckContainer.innerHTML = tempFakeWarDeck.join('');
 
 

@@ -14,34 +14,57 @@
 .header {
   background-color:black;
   color: goldenrod;
-  justify-content: space-between;
-  align-items: center;
   border-style: solid;
   border-color:goldenrod;
   padding: 16px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 2);
+
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
+
 /* HEADER - BUTTONS */
-#play, #reset {
+#play {
   height: 50px;
   width: 100px;
   background-color: white;
   color: black;
   border-style: solid;
   border-color: black;
-  padding: 8px 16px;
+  padding: 4px 8px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   font-size: large;
+  
 }
+
+#reset, #shuffle {
+  height: 35px;
+  width: 75px;
+  background-color: white;
+  color: black;
+  border-style: solid;
+  border-color: black;
+
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+  font-size:small;
+
+  margin: 0 auto;
+}
+
+
 #play:hover {
   background-color: lightgreen;
 }
-#reset:hover {
+#reset:hover, #shuffle:hover {
   background-color: lightcoral;
 }
 
@@ -71,7 +94,7 @@
   margin-top: 40px;
   margin-left: 20px;
   margin-right: 20px;
-  margin-bottom: 150px;
+  margin-bottom: 500px;
 }
 
 .player-1-deck h3, .player-2-deck h3, .player-1-play-card h3, .player-2-play-card h3 {
@@ -256,23 +279,23 @@
 }
 
 
-
 .war-deck {
   visibility: hidden;
   opacity: 0;
-  transition: opacity 0.5s ease-out;
-  position:relative;
+  transition: visibility 0s, opacity 1s ease-out, transform 0.5s ease-out;
+  transform: translateY(-100px);
+  position: relative;
   margin-top: 50px;
 }
 
 .war-deck.show-deck {
-  display: flex;
-  flex-wrap: wrap;
-  visibility:visible;
-  opacity: 100;
-  position: relative;
-  transition: opacity 0.5s ease-out;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
+
+
+
 
 
 .war-card {
@@ -285,9 +308,7 @@
   padding: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 1);
   position: absolute;
-
-
-  transition: opacity 0.5s ease-out;
+  /* transition: opacity 0.5s ease-out; */
 
 }
 
