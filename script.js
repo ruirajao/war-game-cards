@@ -43,9 +43,6 @@ function shuffle() {
 }
 
 function newGame() {
-    // let button = document.querySelector(".play-again");
-    //     let popup_p1 = document.querySelector(".popup-p1");
-    //     let popup_p2 = document.querySelector(".popup-p2");
     hidePopup();
     reset();
 }
@@ -57,7 +54,6 @@ function reset() {
     p2Deck = [];
     tempWonCards = [];
     shuffle();
-    play();
 }
 
 function play() {
@@ -212,14 +208,12 @@ function p1PlayWin() {
     tempWonCards.push(p2Deck.shift());
     console.log("tempWonCards from P1Play: " + JSON.stringify(tempWonCards));
 
-    // console.log("tempWonCards Length From p1PlayWin: " + tempWonCards.length);
     while (tempWonCards.length > 0) {
         p1Deck.push(tempWonCards.shift());
     }
     // console.log("Player 1 won");
     drawWarFakeStack(tempWonCards);
     hideWarDeck();
-    // console.log("after p1 won war:"+ tempWonCards.size);
     console.log("Player 1 won the Round");
 }
 
@@ -228,7 +222,6 @@ function p2PlayWin() {
     tempWonCards.push(p1Deck.shift());
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
 
-    // console.log("tempWonCards Length From p2PlayWin: " + tempWonCards.length);
     while (tempWonCards.length > 0) {
         p2Deck.push(tempWonCards.shift());
     }
@@ -236,7 +229,6 @@ function p2PlayWin() {
     console.log("Player 2 won");
     drawWarFakeStack(tempWonCards);
     hideWarDeck();
-    // console.log("after p1 won war:"+ tempWonCards.size);
     console.log("Player 2 won the Round");
 }
 
@@ -246,14 +238,12 @@ function playWar() {
     if (p1Deck.length < 3) {
         //TODO
         console.log("P1: Not enough cards to play WAR!");
-        //p2PlayWin();
         p2Winner();
         return;
     }
     if (p2Deck.length < 3) {
         //TODO
         console.log("P2: Not enough cards to play WAR!");
-        //p1PlayWin();
         p1Winner();
         return;
     }
@@ -267,7 +257,6 @@ function playWar() {
     drawWarFakeStack(tempWonCards);
 
     console.log("tempWonCards: " + JSON.stringify(tempWonCards));
-    // console.log("tempWonCards Length After WAR: " + tempWonCards.length);
 }
 
 function showWarDeck() {
@@ -276,7 +265,6 @@ function showWarDeck() {
 
     warDecks1.forEach(deck => { deck.classList.add("show-deck"); });
     warDecks2.forEach(deck => { deck.classList.add("show-deck"); });
-    // const warCards = document.querySelectorAll('.war-card');
 
 }
 
@@ -286,9 +274,6 @@ function hideWarDeck() {
         ;
     const warDeck2 = document.querySelector(".war-deck-2");
     warDeck1.classList.remove("show-deck");
-
-    // const warCard = document.querySelector(".war-card");
-    // warDeck.classList.remove("revealed");
 }
 
 function drawWarFakeStack(tempDeck) {
@@ -313,14 +298,11 @@ function drawWarFakeStack(tempDeck) {
     warCards.forEach((card, index) => {
         const x = index + 1;
         const y = index + 1;
-        const angle = (index + 1) * 5; // change this value to adjust the amount of rotation
+        const angle = (index + 1) * 5;
         card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${angle}deg)`;
     });
 
 }
-
-
-
 
 function showWarDeck() {
     const warDecks1 = document.querySelectorAll('.war-deck-1');
@@ -328,8 +310,6 @@ function showWarDeck() {
 
     warDecks1.forEach(deck => { deck.classList.add("show-deck"); });
     warDecks2.forEach(deck => { deck.classList.add("show-deck"); });
-    // const warCards = document.querySelectorAll('.war-card');
-
 }
 
 function hideWarDeck() {
@@ -338,9 +318,6 @@ function hideWarDeck() {
         ;
     const warDeck2 = document.querySelector(".war-deck-2");
     warDeck1.classList.remove("show-deck");
-
-    // const warCard = document.querySelector(".war-card");
-    // warDeck.classList.remove("revealed");
 }
 
 function drawWarFakeStack(tempDeck) {
@@ -364,13 +341,10 @@ function drawWarFakeStack(tempDeck) {
     warCards.forEach((card, index) => {
         const x = index + 1;
         const y = index + 1;
-        const angle = (index + 1) * 5; // change this value to adjust the amount of rotation
+        const angle = (index + 1) * 5;
         card.style.transform = `translateX(${x}px) translateY(${y}px) rotate(${angle}deg)`;
     });
 }
-
-
-
 
 function showPopup() {
     const popup = document.querySelector(".popup-container");
@@ -423,9 +397,3 @@ function p2Winner() {
     p2Win.innerHTML = popup;
     showPopup();
 }
-
-
-
-
-
-
